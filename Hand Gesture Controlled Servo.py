@@ -23,12 +23,12 @@ hands = mp_hands.Hands(
 mp_draw = mp.solutions.drawing_utils
 
 
-# -------------------- FINGER COUNT FUNCTION --------------------
+#FINGER COUNT FUNCTION
 def count_fingers(hand_landmarks, hand_label):
     tip_ids = [4, 8, 12, 16, 20]
     fingers = []
 
-    # -------- THUMB (depends on left/right hand) --------
+    # THUMB (left/right)
     if hand_label == "Right":
         if hand_landmarks.landmark[4].x < hand_landmarks.landmark[3].x:
             fingers.append(1)
@@ -122,7 +122,7 @@ def main():
 
         cv2.imshow("Hand Gesture Servo Control", frame)
 
-        if cv2.waitKey(1) & 0xFF == 27:  # ESC key to exit
+        if cv2.waitKey(1) & 0xFF == 27:  
             break
 
     cap.release()
@@ -130,4 +130,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
